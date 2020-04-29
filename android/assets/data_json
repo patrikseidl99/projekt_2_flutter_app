@@ -1,0 +1,14 @@
+[
+  {
+    "id":"1a",
+    "teplota":26,
+    "tlak": 1012,
+    "vhlkost": 60
+  },
+  {
+    "id":"2a",
+    "teplota":28,
+    "tlak": 1012.5,
+    "vhlkost": 65
+  }
+]

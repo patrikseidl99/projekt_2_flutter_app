@@ -1,129 +1,77 @@
+
 import 'package:flutter/material.dart';
+import 'package:projekt2flutterapp/display.dart';
+import 'package:projekt2flutterapp/alert.dart';
+
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(
+    // Title
+      title: "baby carriage",
+      // Home
+      home: MyHome()));
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MyHome extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
+  MyHomeState createState() => MyHomeState();
+}
+
+// SingleTickerProviderStateMixin is used for animation
+class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
+  // Create a tab controller
+  TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Initialize the Tab Controller
+    controller = TabController(length: 2, vsync: this);
   }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
+  void dispose() {
+    // Dispose of the Tab Controller
+    controller.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color:Colors.blue[900],
-      child: Column(
-          children: <Widget>[
-      AppBar(
-      title: Text("SMART BABY carriage"),
-      elevation: 5,
-      backgroundColor: Colors.transparent,
-
-    ),
-    Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: <Widget>[
-
-    Expanded(
-    flex: 1,
-    child: Container(
-    margin: EdgeInsets.all(10.0),
-    height: MediaQuery.of(context).size.height * 0.25,
-    decoration: BoxDecoration(
-    borderRadius: BorderRadius.circular(10.0),
-    color: Colors.red[500],
-    ),
-    ),
-    ),
-    ],
+    return Scaffold(
+      appBar: AppBar(
+        // Title
+        title: Text("       SMART BABY carriage"),
+        // Set the background color of the App Bar
+        backgroundColor: Colors.blue,
       ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.all(10.0),
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.white
-                    ),
-                  ),
-                ),
-              ],
+      // Set the TabBar view as the body of the Scaffold
+      body: TabBarView(
+        // Add tabs as widgets
+        children: <Widget>[FirstTab(), SecondTab(),],
+        // set the controller
+        controller: controller,
+      ),
+      // Set the bottom navigation bar
+      bottomNavigationBar: Material(
+        // set the color of the bottom navigation bar
+        color: Colors.blue,
+        // set the tab bar as the child of bottom navigation bar
+        child: TabBar(
+          tabs: <Tab>[
+            Tab(
+              // set icon to the tab
+              icon: Icon(Icons.cloud),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    margin: EdgeInsets.all(10.0),
-                    height: MediaQuery.of(context).size.height * 0.25,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10.0),
-                      color: Colors.lightBlueAccent[200],
-                    ),
-                  ),
-                ),
-              ],
-            )
-  ],
-    )
+            Tab(
+              icon: Icon(Icons.alarm),
+            ),
+          ],
+          // setup the controller
+          controller: controller,
+        ),
+      ),
     );
   }
 }
