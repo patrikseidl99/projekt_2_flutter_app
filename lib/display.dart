@@ -51,7 +51,7 @@ class FirstTab extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image.asset('images/male.png',height: 100.0,width: 100.0,),
+                        Image(image:AssetImage('image/icons8-water-100.png')),
                         SizedBox(
                           height: 10.0,
                         ),
