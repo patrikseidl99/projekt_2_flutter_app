@@ -87,7 +87,41 @@ class _MyHomePageState extends State<MyHomePage> {
     ),
     ),
     ],
-      )
+      ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    margin: EdgeInsets.all(10.0),
+                    height: MediaQuery.of(context).size.height * 0.25,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.white
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    margin: EdgeInsets.all(10.0),
+                    height: MediaQuery.of(context).size.height * 0.25,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.lightBlueAccent[200],
+                    ),
+                  ),
+                ),
+              ],
+            )
   ],
     )
     );
