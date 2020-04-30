@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 
 class SecondTab extends StatelessWidget {
+  // Generate dialog
+  AlertDialog dialog = AlertDialog(
+      content: Text(
+        "Hello World!",
+        style: TextStyle(fontSize: 30.0),
+      ));
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
-      backgroundColor: Colors.green,
-      body: Container(
-        child: Center(
-          child: Column(
-            // center the children
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Icon(
-                Icons.adb,
-                size: 160.0,
-                color: Colors.white,
-              ),
-              Text(
-                "Second Tab",
-                style: TextStyle(color: Colors.white),
-              )
-            ],
-          ),
+        appBar: AppBar(
+          title: Text("Using Alert Dialog"),
         ),
-      ),
-    );
+        body: Container(
+          child: Center(
+            child: RaisedButton(
+                child: Text("Hit to alert!"),
+                // On press of the button
+                onPressed: () {
+                  // Show dialog
+                  showDialog(context: context, builder: (BuildContext context) => dialog);
+                }),
+          ),
+        ));
   }
 }

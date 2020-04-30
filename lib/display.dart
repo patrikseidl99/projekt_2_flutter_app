@@ -24,9 +24,9 @@ class FirstTab extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image.asset('images/male.png',height: 100.0,width: 100.0,),
+                        Image.asset('icons8-temperature-100.png',height: 120.0,width: 120.0,),
                         SizedBox(
-                          height: 10.0,
+                          height: 5.0,
                         ),
                         Text('teplota je 26 C',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 30.0))
                       ],
@@ -51,9 +51,9 @@ class FirstTab extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image(image:AssetImage('image/icons8-water-100.png')),
+                        Image(image:AssetImage('icons8-atmospheric-pressure-80.png')),
                         SizedBox(
-                          height: 10.0,
+                          height: 5.0,
                         ),
                         Text('tlak je 60 %',style: TextStyle(color: Colors.lightBlueAccent[200], fontWeight: FontWeight.bold,fontSize: 30.0))
                       ],
@@ -78,9 +78,9 @@ class FirstTab extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        Image.asset('images/male.png',height: 100.0,width: 100.0,),
+                        Image.asset('image/icons8-water-100.png',height: 120.0,width: 120.0,),
                         SizedBox(
-                          height: 10.0,
+                          height: 5.0,
                         ),
                         Text('vhlkost je 60 %',style: TextStyle(color: Colors.red[500], fontWeight: FontWeight.bold,fontSize: 30.0))                      ],
                     ),
