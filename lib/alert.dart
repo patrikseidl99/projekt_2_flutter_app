@@ -10,6 +10,7 @@ class SecondTab extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return Scaffold(
+        backgroundColor: Image.asset('images/background.jpg').color,
         appBar: AppBar(
           title: Text("Using Alert Dialog"),
         ),
