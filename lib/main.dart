@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:projekt2flutterapp/Load_json.dart';
 import 'package:projekt2flutterapp/display.dart';
 import 'package:projekt2flutterapp/alert.dart';
 
@@ -27,7 +28,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
     super.initState();
 
     // Initialize the Tab Controller
-    controller = TabController(length: 2, vsync: this);
+    controller = TabController(length: 3, vsync: this);
   }
 
   @override
@@ -36,7 +37,6 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
     controller.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +49,7 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
       // Set the TabBar view as the body of the Scaffold
       body: TabBarView(
         // Add tabs as widgets
-        children: <Widget>[FirstTab(), SecondTab(),],
+        children: <Widget>[FirstTab(), SecondTab(),LoadTab()],
         // set the controller
         controller: controller,
       ),
@@ -67,6 +67,9 @@ class MyHomeState extends State<MyHome> with SingleTickerProviderStateMixin {
             Tab(
               icon: Icon(Icons.alarm),
             ),
+            Tab(
+              icon: Icon(Icons.leak_add),
+            )
           ],
           // setup the controller
           controller: controller,

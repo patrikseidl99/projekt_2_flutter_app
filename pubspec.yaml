@@ -43,7 +43,8 @@ flutter:
     - icons8-temperature-100.png
     - icons8-atmospheric-pressure-80.png
     - background.jpg
-    - assets/data.json
+    - data.json
+    - data1.json
   # To add assets to your application, add an assets section, like this:
   # assets:
   #   - images/a_dot_burr.jpeg
