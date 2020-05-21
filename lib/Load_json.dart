@@ -1,55 +1,54 @@
-import 'dart:convert';
-import 'dart:io';
+
+import 'package:projekt2flutterapp/data.dart';
 import 'package:flutter/material.dart';
 
-
 class LoadTab extends StatelessWidget {
-  List data;
+  Future<List<DataJson>> fetchData(BuildContext context) async{
+    final jsonString = await DefaultAssetBundle.of(context).loadString(
+        'LoadJSON/data1.json');
+    return dataJsonFromJson(jsonString);
+  }
   @override
   Widget build(BuildContext context) {
-  return new Scaffold(
-    appBar: new AppBar(
-      title: new Text("load data"),
-    ),
-    body: new Container(
-      child: new Center(
-        child: new FutureBuilder(
-          future:DefaultAssetBundle
-              .of(context)
-              .loadString('LoadJSON/data1.json'),
-          builder: (context, snapshot){
-           // inside
-          var mydata= jsonDecode(snapshot.data.toString());
-          return new ListView.builder(
-            itemBuilder: (BuildContext context,int idex){
-              return new Card(
-                child: new Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: <Widget>[
-                    new Text("Name"+mydata['sensor']),
-                    new Text("Number"+mydata['sample']),
-                    new Text("Battery"+mydata['batt']),
-                    new Text("Vlhkost"+mydata['hum']),
-                    new Text("press1"+mydata['press1']),
-                    new Text("press2"+mydata['press2']),
-                    new Text("Teplota1"+mydata['T1']),
-                    new Text("Teplota2"+mydata['T2']),
-                    new Text("Teplota3"+mydata['T3']),
-                    new Text("Teplota4"+mydata['T4']),
-                    new Text("Teplota5"+mydata['T5']),
-                    new Text("Teplota6"+mydata['T6']),
-                    new Text("Teplota7"+mydata['T7']),
-                    new Text("Teplota8"+mydata['T8']),
-                    new Text("Teplota9"+mydata['T9']),
+  return Scaffold(
+    appBar: AppBar(
+      title: Text("load data"),),
+    body: Container(
+        child: FutureBuilder(
+          future: fetchData(context),
+          builder:(context,snapshot){
+            if(snapshot.hasData){
+              return ListView.builder(
+                itemCount:snapshot.data.length,
+                shrinkWrap: true,
+                itemBuilder: (BuildContext context, int index){
+                  DataJson data = snapshot.data[index];
+                  return Padding(
+                    padding: const EdgeInsets.all(10.0),
+                  child: Card(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                    children :<Widget>[
+                      Text(
+                          data.sensor,style: TextStyle(fontSize: 50),
+                      ),
+                      Text(data.sample,style: TextStyle(fontSize: 20)),
+                      Text(data.batt,style: TextStyle(fontSize: 20)),
+                      Text(data.hum,style: TextStyle(fontSize: 20)),
+                      Text(data.press1,style: TextStyle(fontSize: 20)),
+                      Text(data.press2,style: TextStyle(fontSize: 20)),
+                      Text(data.t1,style: TextStyle(fontSize: 20)),
+                      Text(data.t2,style: TextStyle(fontSize: 20)), Text(data.t3,style: TextStyle(fontSize: 20)), Text(data.t4,style: TextStyle(fontSize: 20)), Text(data.t5,style: TextStyle(fontSize: 20)), Text(data.t6,style: TextStyle(fontSize: 20)),Text(data.t7,style: TextStyle(fontSize: 20)),Text(data.t8,style: TextStyle(fontSize: 20)),Text(data.t9,style: TextStyle(fontSize: 20)),
                   ],
-                ),
+                  ),
+                  ),
+                  );
+                },
               );
-            },
-            itemCount: mydata== null ? 0:mydata.length,
-          );
-            },
+            }
+            return CircularProgressIndicator();
+          },
         ),
-      ),
     )
   );
   }

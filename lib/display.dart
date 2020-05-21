@@ -28,7 +28,7 @@ class FirstTab extends StatelessWidget {
                         SizedBox(
                           height: 5.0,
                         ),
-                        Text('teplota je 26 C',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 30.0))
+                        Text('teplota: 26 C',style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold,fontSize: 30.0))
                       ],
                     ),
                   ),
@@ -55,7 +55,7 @@ class FirstTab extends StatelessWidget {
                         SizedBox(
                           height: 5.0,
                         ),
-                        Text('tlak je 60 %',style: TextStyle(color: Colors.lightBlueAccent[200], fontWeight: FontWeight.bold,fontSize: 30.0))
+                        Text('tlak: 1023 hPa',style: TextStyle(color: Colors.lightBlueAccent[200], fontWeight: FontWeight.bold,fontSize: 30.0))
                       ],
                     ),
                   ),
@@ -82,7 +82,7 @@ class FirstTab extends StatelessWidget {
                         SizedBox(
                           height: 5.0,
                         ),
-                        Text('vhlkost je 60 %',style: TextStyle(color: Colors.red[500], fontWeight: FontWeight.bold,fontSize: 30.0))                      ],
+                        Text('vhlkost: 60 %',style: TextStyle(color: Colors.red[500], fontWeight: FontWeight.bold,fontSize: 30.0))                      ],
                     ),
                   ),
                 ),
